@@ -1,0 +1,66 @@
+NOTICE
+======
+
+MAWS — Man, Ai, World, Screen
+Copyright (c) 2026 Alexander Slavinsky
+Licensed under the MIT License — see the LICENSE file.
+
+This file lists every third-party component bundled with this project, together
+with the license it is used under. The project's own license (MIT) covers the
+project as a whole; the notices below are kept because the MIT license requires
+the copyright notice and permission notice to be retained in copies of the
+covered code.
+
+
+--------------------------------------------------------------------
+1. Bundled dependencies (installed via Composer, see composer.json)
+--------------------------------------------------------------------
+
+Package                                  License
+---------------------------------------- -----------
+colinodell/json5                         MIT
+guzzlehttp/guzzle                        MIT
+guzzlehttp/promises                      MIT
+guzzlehttp/psr7                          MIT
+psr/http-client                          MIT
+psr/http-factory                         MIT
+psr/http-message                         MIT
+symfony/polyfill-php80                   MIT
+symfony/polyfill-php82                   MIT
+voku/portable-ascii                      MIT
+
+Three packages are required by composer.json directly — colinodell/json5,
+guzzlehttp/guzzle and voku/portable-ascii. The rest are their dependencies and
+are installed with them:
+
+    guzzlehttp/guzzle   → guzzlehttp/promises, guzzlehttp/psr7, psr/http-client,
+                          psr/http-factory, symfony/polyfill-php80,
+                          symfony/polyfill-php82
+    guzzlehttp/psr7     → psr/http-factory, psr/http-message,
+                          symfony/polyfill-php80, symfony/polyfill-php82
+    psr/http-client     → psr/http-message
+    psr/http-factory    → psr/http-message
+
+Versions are deliberately not listed: this file serves license compliance, and
+the license does not depend on which version is installed. The exact set and
+versions are pinned in composer.lock.
+
+Every listed package is MIT, so no additional obligations beyond the copyright
+and permission notice apply. The license texts and copyright notices of these
+packages ship inside the installed trees — vendor/<package>/LICENSE,
+vendor/<package>/LICENSE.md or vendor/<package>/LICENSE.txt. They are not
+duplicated here.
+
+
+--------------------------------------------------------------------
+2. Not covered by this file
+--------------------------------------------------------------------
+
+.tools/php-cs-fixer.phar is a development tool, not a dependency of the
+framework: it is downloaded by the developer (see README, "Проверка стиля
+кода"), is not installed by Composer and is not part of the distributed tree.
+Its own license — MIT — applies to that file alone.
+
+vendor/ is not part of the repository: it is produced by `composer install`
+from composer.json and composer.lock, and the notices above describe what that
+command brings in.

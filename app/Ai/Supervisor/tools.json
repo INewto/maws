@@ -1,0 +1,32 @@
+// Инструменты надзирателя — его агенты. Описание и схема те же, что у обычного
+// инструмента: по описанию модель и решает, кого позвать и с какой задачей.
+[
+    {
+        "name": "sayHelloAgent",
+        "description": "Агент, который здоровается. Принимает задачу и отвечает приветствием",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "task": {
+                    "type": "string",
+                    "description": "задача для агента"
+                }
+            },
+            "required": ["task"]
+        }
+    },
+    {
+        "name": "sayByeAgent",
+        "description": "Агент, который прощается. Принимает задачу и отвечает прощанием",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "task": {
+                    "type": "string",
+                    "description": "задача для агента"
+                }
+            },
+            "required": ["task"]
+        }
+    }
+]

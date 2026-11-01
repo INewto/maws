@@ -1,0 +1,18 @@
+// Инструменты, которые агент показывает модели: имя, описание и схема входа.
+// Agent1 умеет только здороваться — это его контракт, а не настройка.
+[
+    {
+        "name": "sayHello",
+        "description": "Says hello one or few times",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number",
+                    "description": "how many times to say"
+                }
+            },
+            "required": ["amount"]
+        }
+    }
+]

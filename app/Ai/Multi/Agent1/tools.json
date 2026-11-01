@@ -1,0 +1,45 @@
+// Инструменты, которые агент показывает модели: имя, описание и схема входа.
+[
+    {
+        "name": "sayHello",
+        "description": "Says hello one or few times",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number",
+                    "description": "how many times to say"
+                }
+            },
+            "required": ["amount"]
+        }
+    },
+    {
+        "name": "sayBye",
+        "description": "Says bye one or few times",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number",
+                    "description": "how many times to say"
+                }
+            },
+            "required": ["amount"]
+        }
+    },
+    {
+        "name": "askAgent2",
+        "description": "Runs the neighbouring agent Agent2 in its own process and returns what it printed",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "task": {
+                    "type": "string",
+                    "description": "task handed to Agent2"
+                }
+            },
+            "required": ["task"]
+        }
+    }
+]

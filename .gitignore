@@ -1,0 +1,6 @@
+/vendor/
+/.tools/
+/app/Tests/*
+!/app/Tests/Core/
+*.log
+.php-cs-fixer.cache

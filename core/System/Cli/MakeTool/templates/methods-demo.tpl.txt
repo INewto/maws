@@ -1,0 +1,12 @@
+
+    // Данные инструмента: записи его таблицы, прочитанные через Repository.
+    private function getTestData(): array
+    {
+        return (new Repository($this->db))->{{Method}}();
+    }
+
+    // Разметка инструмента: данные, отданные шаблону.
+    private function showHTML(array $data): string
+    {
+        return (new Page())->index($data);
+    }

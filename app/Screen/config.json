@@ -1,0 +1,6 @@
+// Какая сцена рисует направление: ключ — направление, значение — каталог в Screen/Scenes.
+{
+  "Default": "Default",
+  "Public": "Default",
+  "Error": "Error"
+}

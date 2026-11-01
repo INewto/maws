@@ -1,0 +1,18 @@
+// Инструменты, которые агент показывает модели: имя, описание и схема входа.
+// Agent2 умеет только прощаться — это его контракт, а не настройка.
+[
+    {
+        "name": "sayBye",
+        "description": "Says bye one or few times",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number",
+                    "description": "how many times to say"
+                }
+            },
+            "required": ["amount"]
+        }
+    }
+]

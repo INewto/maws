@@ -1,0 +1,7 @@
+// Политика сессии. Ключей ровно четыре: путь "/", httponly и каталог сохранения зашиты в Session.
+{
+    "name": "maws_sid",   // имя cookie
+    "lifetime": 0,        // секунды; 0 — до закрытия браузера
+    "secure": null,       // null — по схеме запроса; true — только https
+    "sameSite": "Lax"     // Lax | Strict | None
+}
