@@ -1,0 +1,53 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: maws
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: pdo_pgsql, mbstring, gd
+          coverage: none
+
+      - run: composer install --no-interaction --no-progress
+
+      - name: Реквизиты базы для CI
+        run: |
+          php -r '
+          $f = "app/config.php"; $s = file_get_contents($f);
+          $s = preg_replace("/^const DBASE_DSN\s*=.*$/m", "const DBASE_DSN = \"pgsql:host=127.0.0.1;port=5432;dbname=maws\";", $s);
+          $s = preg_replace("/^const DBASE_USER\s*=.*$/m", "const DBASE_USER = \"postgres\";", $s);
+          $s = preg_replace("/^const DBASE_PASSWORD\s*=.*$/m", "const DBASE_PASSWORD = \"postgres\";", $s);
+          file_put_contents($f, $s);'
+
+      - run: mkdir -p logs
+
+      - run: php maws.php doctor
+
+      - run: php maws.php make migrate
+
+      - run: php maws.php test
