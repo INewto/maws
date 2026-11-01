@@ -50,4 +50,6 @@ jobs:
 
       - run: php maws.php make migrate
 
+      - run: php maws.php make build
+
       - run: php maws.php test
